@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Employee Management System
 
 A responsive Employee Management System built using React and Tailwind CSS.

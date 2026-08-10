@@ -24,16 +24,6 @@ function Navbar() {
           >
             Home
           </NavLink>
-          <NavLink
-            to="/add"
-            className={({ isActive }) =>
-              isActive
-                ? "text-blue-600 font-semibold"
-                : "text-gray-600 hover:text-blue-600 transition"
-            }
-          >
-            Add Employee
-          </NavLink>
         </div>
         {/* Admin */}
         <div className="flex items-center gap-3">
