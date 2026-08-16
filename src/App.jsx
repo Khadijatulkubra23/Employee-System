@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -7,21 +6,37 @@ import EmployeeDetails from "./pages/EmployeeDetails";
 import AddEmployee from "./pages/AddEmployee";
 import EditEmployee from "./pages/EditEmployee";
 import NotFound from "./pages/NotFound";
-import mockEmployees from "./data/employees";
+import { useTheme } from "./context/ThemeContext";
 function App() {
-  const [employees, setEmployees] = useState(mockEmployees);
+  const { darkMode } = useTheme();
   return (
-    <>
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        darkMode
+          ? "dark bg-gray-900 text-white"
+          : "bg-gray-100 text-gray-800"
+      }`}
+    >
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home employees={employees} setEmployees={setEmployees} />}/>
-        <Route path="/employee/:id" element={<EmployeeDetails employees={employees} />} />
-        <Route path="/add" element={<AddEmployee employees={employees} setEmployees={setEmployees} />} />
-        <Route path="/edit/:id" element={<EditEmployee employees={employees} setEmployees={setEmployees} />} />
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/employee/:id"
+          element={<EmployeeDetails />}
+        />
+        <Route
+          path="/add"
+          element={<AddEmployee />}
+        />
+        <Route
+          path="/edit/:id"
+          element={<EditEmployee />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
       <Footer />
-    </>
+    </div>
   );
 }
 export default App;
